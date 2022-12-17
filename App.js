@@ -7,21 +7,7 @@ import Completed from "./components/Completed";
 export default function App() {
   const [modalIsVısıble, setModalIsVisible] = useState(false);
   const [completedModal, setCompletedModal] = useState(false);
-  const [goals, setGoals] = useState([
-    { text: "123", id: 1 },
-    { text: "123", id: 1 },
-    { text: "123", id: 1 },
-    { text: "123", id: 1 },
-    { text: "123", id: 1 },
-    { text: "123", id: 1 },
-    { text: "123", id: 1 },
-    { text: "123", id: 1 },
-    { text: "123", id: 1 },
-    { text: "123", id: 1 },
-    { text: "123", id: 1 },
-    { text: "123", id: 1 },
-    { text: "123", id: 1 },
-  ]);
+  const [goals, setGoals] = useState([]);
   const [completed, setCompleted] = useState([]);
 
   const modalHandler = () => {
@@ -33,16 +19,13 @@ export default function App() {
   };
 
   const addGoalHandler = (input) => {
-    setGoals((currentGoals) => [
-      ...currentGoals,
-      { text: input, id: Math.random().toString() },
-    ]);
+    setGoals((currentGoals) => [...currentGoals, { text: input, id: input }]);
   };
-  const deleteGoalHandler = (item) => {
+  const deleteGoalHandler = (task) => {
     setGoals((currentGoals) =>
-      currentGoals.filter((item) => item.id !== item.id)
+      currentGoals.filter((item) => item.id !== task.id)
     );
-    setCompleted((currentCompleted) => [...currentCompleted, item]);
+    setCompleted((currentCompleted) => [...currentCompleted, task]);
   };
   return (
     <>
